@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {% include head.html %}
+
+  <body>
+
+      {% include header.html %}
+
+      <main class="page-content zigzag dark" aria-label="Content">
+        {% if page.url == '/' %}
+          {{ content }}
+        {% else %}
+          <section class="wrapper">
+            {{ content }}
+          </section>
+        {% endif %}
+      </main>
+
+      {% include footer.html %}
+
+
+  </body>
+
+</html>

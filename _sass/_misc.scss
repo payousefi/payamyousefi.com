@@ -1,0 +1,190 @@
+/**
+ * Separator CSS
+ */
+
+.zigzag {
+  &:after {
+    content: '';
+    position:absolute;
+    display: block;
+  	top: 100%;
+    right: 0;
+    left: 0;
+    height: 90px;
+    pointer-events: none;
+    z-index: 10;
+    background-size: 50px 100%;
+    @include background-image(linear-gradient(135deg, #fff 25%, transparent 25%),
+                              linear-gradient(225deg, #fff 25%, transparent 25%));
+    background-position: 50%;
+  }
+
+  &.dark:after {
+    @include background-image(linear-gradient(135deg, #f4f4f4 25%, transparent 25%),
+                              linear-gradient(225deg, #f4f4f4 25%, transparent 25%));
+  }
+}
+
+
+
+
+/**
+ * Mockup framing for portfolio images
+ */
+ 
+.plain-mockup {
+  display: inline-block;
+  box-shadow: 0 2px 6px -2px rgba(0,0,0,0.4);
+  position: relative;
+  border-radius: 2px;
+  border:4px solid #FFF;
+  background: #fff;
+  overflow:hidden;
+  width:100%;
+}
+
+.mobile-mockup {
+  display: inline-block;
+  width:40%;
+  margin:0 4%;
+  border: 8px solid #222;
+  border-top: 44px solid #222;
+  border-bottom: 44px solid #222;
+  box-shadow: 0 2px 6px -2px rgba(0,0,0,0.4);
+  position: relative;
+  border-radius: 15px;
+  background: #222;
+
+  &.side {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    @include transform(scale(0.65) translate(10%,35%));
+  }
+
+  @include media-query($on-palm) {
+    border: 4px solid #333;
+    border-top: 24px solid #333;
+    border-bottom: 24px solid #333;
+  }
+
+  &:before {
+    display: block;
+    position: absolute;
+    content: '';
+    bottom: -36px;
+    left:50%;
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    background-color: #555;
+    transform: translate(-50%, 0);
+
+    @include media-query($on-palm) {
+      width: 15px;
+      height: 15px;
+      bottom: -19px;
+    }
+  }
+  
+}
+
+.browser-mockup {
+  display: inline-block;
+  width:100%;
+  border-top: 22px solid #dcdcdc;
+  box-shadow: 0 2px 6px -2px rgba(0,0,0,0.4);
+  position: relative;
+  border-radius: 4px 4px 0 0;
+  background: #dcdcdc;
+
+  &:before {
+    display: block;
+    position: absolute;
+    content: '';
+    top: -14px;
+    left: 13px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px #fff, 1.1em 0 0 2px #fff, 2.2em 0 0 2px #fff;
+    @include transition(all 0.25s ease-in-out);
+  }
+  
+  &.active:before {
+    background-color: #f44;
+    box-shadow: 0 0 0 2px #f44, 1.1em 0 0 2px #9b3, 2.2em 0 0 2px #fb5;
+  }
+}
+
+
+/**
+ * Social Icons
+ */
+
+@include font-face("py-socials", "fonts/py-socials", normal, $file-formats: eot woff ttf svg);
+
+i[class^="icon-"] {
+  font-family: 'py-socials' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mail:before {
+  content: "\e620";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-flickr2:before {
+  content: "\eaa4";
+}
+.icon-github:before {
+  content: "\eab0";
+}
+.icon-soundcloud:before {
+  content: "\eac3";
+}
+.icon-linkedin2:before {
+  content: "\eaca";
+}
+.icon-lastfm:before {
+  content: "\eacb";
+}
+
+
+/*  PACE progress bar styling
+----------------------------------------------------- */
+.pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.pace-inactive {
+    display: none;
+}
+
+.pace .pace-progress {
+    background: $brand-color;
+    background: rgba($brand-color,0.25);
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 2px;
+}
+

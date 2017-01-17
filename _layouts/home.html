@@ -1,0 +1,94 @@
+---
+layout: default
+---
+
+<section class="home">
+
+  <section class="categories wrapper">
+
+    <section class="category-list">
+      {% for category in site.categories %}
+          <a href="#{{ category | first }}">
+            {% case category.first %}
+              {% when 'content' %}content sites
+              {% else %}{{ category | first }}
+            {% endcase %}
+          </a>
+      {% endfor %}
+    </section>
+
+  </section>
+
+  <section class="portfolio">
+
+    {% for category in site.categories %}
+      <section class="tab-{{ category | first }}" style="transform: translate3d({%if category.first=='apps' %}0%{% else %}-200%{% endif %}, 0px, 0px);">
+
+        {% for posts in category %}
+          {% for post in posts %}
+            {% if post.url %}
+            <section class="portfolio-post">
+
+              <section class="thumb">
+
+                {% for type in post.img %}
+                  <a href="{{ post.url | relative_url }}"><figure class="post-image">
+
+                      {% if type.first == 'browser' and post.img.mobile %}
+                        {% for src in post.img.mobile %}
+                          {% assign urls = src | split:',' %}
+                          {% for url in urls %}
+                            <div class="{{ type | first}}-mockup side">
+                              {% picture {{ type[1] | first | split:"," | first }} %}
+                            </div>
+                            <div class="mobile-mockup side">{% picture {{ url }} %}</div>
+                            {% break %}
+                          {% endfor %}
+                          {% break %}
+                        {% endfor %}
+                      {% else %}
+
+                        <div class="{{ type | first}}-mockup">
+                          {% picture {{ type[1] | first | split:"," | first }} %}
+                        </div>
+
+                      {% endif %}
+
+
+                  </figure></a>
+                  {% break %}
+                {% endfor %}
+
+              </section>
+
+              <section class="detail">
+
+                <h2>
+                  <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+                </h2>
+
+                <p class="post-desc">
+                  {{ post.excerpt | strip_html | escape }}
+                </p>
+
+                <ul class="tags">
+                  {% for tag in post.tags %}
+                    <li>
+                      {{ tag }}
+                    </li>
+                  {% endfor %}
+                </ul>
+
+              </section>
+
+            </section>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </section>
+
+    {% endfor %}
+
+  </section>
+
+</section>

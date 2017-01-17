@@ -1,0 +1,42 @@
+# Site settings
+title: Payam Yousefi
+author: Payam Yousefi
+email: hello@payamyousefi.com
+description: >
+  Payam Yousefi is a software engineer with skills and experience in web development, design,
+   data analysis, scientific research, bioinformatics,
+   troubleshooting and problem solving.
+tagline: >
+  Web, Software & Bio Engineer
+baseurl: ""
+url: http://payamyousefi.com
+google_analytics: UA-46647973-1
+
+# Build settings
+markdown: kramdown
+gems:
+  - jekyll-feed
+  - jekyll-minifier
+  - jekyll-sitemap
+exclude:
+  - Gemfile
+  - Gemfile.lock
+picture:
+  source: assets/images/_fullsize
+  output: generated
+  markup: picture
+  presets:
+    # Full width pictures
+    default:
+      ppi: [1, 1.5]
+      attr:
+        class: portfolio-full
+        itemprop: image
+      source_lrg:
+        media: "(min-width: 40em)"
+        width: 900
+      source_med:
+        media: "(min-width: 30em)"
+        width: 650
+      source_default:
+        width: 650

@@ -1,0 +1,68 @@
+---
+layout: default
+---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+    <ul class="tags">
+      {% for tag in page.tags %}
+        <li>
+          {{ tag }}
+        </li>
+      {% endfor %}
+    </ul>
+  </header>
+
+  <section class="post-content" itemprop="articleBody">
+
+
+    <section class="text">
+      {{ content }}
+    </section>
+
+    <section class="images">
+
+      {% if page.img.browser %}
+        {% for src in page.img.browser %}
+          {% assign urls = src | split:',' %}
+          {% for url in urls %}
+          <figure class="post-image">
+            <div class="browser-mockup active">{% picture {{ url }} %}</div>
+          </figure>
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+
+      {% if page.img.mobile %}
+        <figure class="post-image">
+        {% for src in page.img.mobile %}
+          {% assign urls = src | split:',' %}
+          {% for url in urls %}
+            {% capture modulo %}{{ forloop.index0 | modulo:2 }}{% endcapture %}
+            {%if modulo=='0' %}{% unless forloop.first %}</figure><figure class="post-image">{% endunless %}{% endif %}
+            <div class="mobile-mockup">{% picture {{ url }} %}</div>
+          {% endfor %}
+        {% endfor %}
+        </figure>
+      {% endif %}
+
+      {% if page.img.plain %}
+        {% for src in page.img.plain %}
+          {% assign urls = src | split:',' %}
+          {% for url in urls %}
+          <figure class="post-image">
+            <div class="plain-mockup">{% picture {{ url }} %}</div>
+          </figure>
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+
+
+
+    </section>
+
+  </section>
+
+
+</article>
