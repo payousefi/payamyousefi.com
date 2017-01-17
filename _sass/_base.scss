@@ -248,7 +248,7 @@ pre {
      font-size: 20px;
    }
 
-   &:hover {
+   &:hover:not(:disabled) {
      color: darken($brand-color, 25%);
      border-color: darken($brand-color, 25%);
      letter-spacing: 1px;
@@ -256,6 +256,16 @@ pre {
    
    &:focus {
      outline: 0;
+   }
+   
+   &:disabled {
+     border-color: #AAA;
+     color: #AAA;
+     
+     &:after {
+       content: "ing...";
+       letter-spacing: 1px;
+     }
    }
  }
 

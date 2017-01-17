@@ -91,9 +91,10 @@ $(document).ready(function() {
    // Get the messages div.
   $('.messageForm form').submit(function(event) {
       event.preventDefault();
-
+      
       // Serialize
-      var formData = $('.messageForm form').serialize();
+      var formData = $('.messageForm form').serialize();      
+      $('.messageForm form button').prop("disabled",true);
       
       // Submit via AJAX
       $.ajax({
@@ -114,6 +115,7 @@ $(document).ready(function() {
         $('.form-mesg').removeClass('success');
         $('.form-mesg').addClass('error');
         $('.form-mesg').show();
+        $('.messageForm form button').prop("disabled",false);
 
         // Set the message text.
         if (error.responseText !== '') {
