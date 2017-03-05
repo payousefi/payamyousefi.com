@@ -195,11 +195,11 @@ pre {
 }
 
 
-/** 
+/**
  * Inputs / Buttons
- */ 
- 
- 
+ */
+
+
  input, textarea {
    display: block;
    outline: 0;
@@ -216,7 +216,7 @@ pre {
    background: #FFF;
    color: #666;
    @include transition(all 0.3s ease-in-out);
-   
+
    &:focus {
      outline: 0;
      border-bottom: 2px solid $brand-color;
@@ -253,15 +253,15 @@ pre {
      border-color: darken($brand-color, 25%);
      letter-spacing: 1px;
    }
-   
+
    &:focus {
      outline: 0;
    }
-   
+
    &:disabled {
      border-color: #AAA;
      color: #AAA;
-     
+
      &:after {
        content: "ing...";
        letter-spacing: 1px;

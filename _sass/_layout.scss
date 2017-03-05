@@ -18,7 +18,7 @@
   &, &:visited {
     color: darken($grey-color-dark, 10%);
   }
-  
+
   &:hover {
     text-decoration: none;
     color: #000;
@@ -47,10 +47,10 @@
 }
 
 
-/** 
+/**
  * Regular site nav
- */ 
- 
+ */
+
 
 .site-nav {
   float: right;
@@ -199,10 +199,10 @@
 }
 
 
-/** 
+/**
  * Contact form
- */ 
- 
+ */
+
 .messageForm {
   display: block;
   max-height:0;
@@ -217,12 +217,12 @@
     @include media-query($on-palm) {
       width: 100%;
     }
-    
+
     p {
       text-align: center;
-      margin-top: 25px;      
+      margin-top: 25px;
     }
-    
+
   }
 
   &.expanded {
@@ -232,15 +232,15 @@
 }
 
 
-.form-mesg { 
+.form-mesg {
   padding:10px;
   border-radius: 4px;
-  
-  &.success {  
+
+  &.success {
     background: #e6e5fb;
     //background: rgba($brand-color, 0.15);
   }
-  &.error {  
+  &.error {
     background: #ffd9d8;
     //background: rgba(red, 0.15);
   }
@@ -286,9 +286,9 @@
 }
 
 
- /** 
+ /**
   * Sticky category navigation
-  */ 
+  */
 
 .sticky-nav {
   opacity:0;
@@ -314,7 +314,7 @@
 /*
  * Categories List
  */
- 
+
 
 .categories {
   margin-top:45px;
@@ -340,7 +340,7 @@
 
       &:last-child {
         margin-right:0;
-    
+
         @include media-query($on-palm) {
           margin-right: 10px;
         }
@@ -353,7 +353,7 @@
       &.selected {
         color: $brand-color;
       }
-  
+
       @include media-query($on-palm) {
         margin-left: 10px;
         margin-right: 10px;
@@ -396,7 +396,7 @@
     }
   }
 
-  .thumb {    
+  .thumb {
     @include span-columns(6);
     @include transition(all 0.25s ease-in-out);
 
@@ -421,9 +421,9 @@
       @include span-columns(12);
       padding-left: 0;
     }
-    
+
     h2 {
-      margin-bottom: 15px; 
+      margin-bottom: 15px;
     }
     p {
       font-size: 16px;
@@ -463,7 +463,7 @@
       padding-right: 0;
       margin-bottom: 25px;
     }
-    
+
     p {
       line-height: 1.8em;
     }
