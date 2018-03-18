@@ -169,6 +169,15 @@
         border-bottom: 1px solid rgba($brand-color, 0.4);
       }
     }
+
+    &.note {
+      font-size: 15px;
+      background-color: $grey-color-light;
+      padding: 15px;
+      font-style: italic;
+      border-radius: 4px;
+    }
+
   }
 
 }
@@ -264,7 +273,6 @@
   }
 
 }
-
 
 /**
  * Page content
