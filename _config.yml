@@ -10,7 +10,7 @@ tagline: >
   Web, Software & Bio Engineer
 baseurl: ""
 url: https://payamyousefi.com
-google_analytics: UA-46647973-1
+google_analytics: G-VB31S6GZ1J
 
 # Category display order for portfolio
 category_order:
@@ -32,6 +32,7 @@ picture:
   source: assets/images/_fullsize
   output: generated
   markup: picture
+  relative_url: true
   presets:
     # Full width pictures
     default:
