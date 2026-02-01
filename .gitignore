@@ -5,3 +5,4 @@ _drafts
 Gemfile.lock
 assets/images/_fullsize
 _posts
+.DS_Store

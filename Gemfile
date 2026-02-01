@@ -21,6 +21,6 @@ group :jekyll_plugins do
    gem 'jekyll-picture-tag', '~> 0.3.0'
    gem 'jekyll-minifier'
    gem 'jekyll-sitemap'
-   gem 'bourbon'
-   gem 'neat'
+   gem 'bourbon', '~> 4.3'
+   gem 'neat', '~> 1.7'
 end
