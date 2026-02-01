@@ -10,12 +10,22 @@ $(document).ready(function() {
 
       var portfolioIndex = $('.category-list a[href="#' + currentTab + '"]').index();
       $('section[class^="tab-"]').css('transform', 'translate3D(-' + 100*portfolioIndex + '%, 0, 0)');
+      
+      // Accessibility: Hide non-active tabs from screen readers and keyboard navigation
+      $('section[class^="tab-"]').not('section.tab-'+currentTab)
+        .attr('aria-hidden', 'true')
+        .find('a, button, input, select, textarea, [tabindex]').attr('tabindex', '-1');
+      
+      // Make active tab accessible
+      $('section.tab-'+currentTab)
+        .attr('aria-hidden', 'false')
+        .find('a, button, input, select, textarea, [tabindex="-1"]').removeAttr('tabindex');
             
       // resize portfolio to fit
-      setTimeout(function(){  
-        $('section[class^="tab-"]').not('section.tab-'+currentTab).css('height', '0px');   
+      setTimeout(function(){
+        $('section[class^="tab-"]').not('section.tab-'+currentTab).css('height', '0px');
         $('section.tab-'+currentTab).css('height','auto');
-        $('.portfolio').css('max-height', $('section.tab-'+currentTab).get(0).scrollHeight+'px');   
+        $('.portfolio').css('max-height', $('section.tab-'+currentTab).get(0).scrollHeight+'px');
       },800);
       
   }
@@ -45,7 +55,7 @@ $(document).ready(function() {
   // Smooth scroll to contact section
   $('a[href="#contact"]').click(function(e) {
       e.preventDefault();
-      $('a[name="contact"]').velocity('scroll', {duration: 750, easing: 'easeout', offset: 1});
+      $('#contact').velocity('scroll', {duration: 750, easing: 'easeout', offset: 1});
   });
 
   //Sticky portfolio nav
@@ -77,7 +87,14 @@ $(document).ready(function() {
   });
   
   $(".menu-icon").click(function(){
-    $(".site-nav.active").length === 0 ? $(".site-nav").addClass('active') : $(".site-nav").removeClass('active');  
+    var isExpanded = $(".site-nav").hasClass('active');
+    if (isExpanded) {
+      $(".site-nav").removeClass('active');
+      $(this).attr('aria-expanded', 'false');
+    } else {
+      $(".site-nav").addClass('active');
+      $(this).attr('aria-expanded', 'true');
+    }
   });
   
 });

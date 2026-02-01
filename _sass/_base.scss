@@ -103,6 +103,50 @@ a {
     color: var(--color-brand-hover);
   }
 
+  // Use native browser focus outlines for familiarity
+  &:focus:not(:focus-visible) {
+    outline: none; // Hide focus for mouse users
+  }
+
+  // Let browser handle focus-visible with its native outline
+  // This provides familiar, accessible focus indicators for keyboard users
+}
+
+/**
+ * Skip link for keyboard navigation
+ */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-brand);
+  color: var(--color-bg);
+  padding: 10px 20px;
+  border-radius: 4px;
+  z-index: 1000;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:focus {
+    top: 10px;
+    outline: 2px solid var(--color-bg);
+    outline-offset: 2px;
+  }
+}
+
+/**
+ * Reduced motion preference
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 
@@ -204,7 +248,6 @@ pre {
 
  input, textarea {
    display: block;
-   outline: 0;
    box-shadow: none;
    border-radius: 0;
    @include appearance(none);
@@ -214,16 +257,20 @@ pre {
    font-family: $base-font-family;
    padding: 10px;
    border: 1px solid var(--color-input-border);
-   border-bottom: 2px solid var(--color-input-border);
+   border-bottom: 2px solid var(--color-brand);
    background: var(--color-input-bg);
    color: var(--color-text-muted);
    @include transition(all 0.3s ease-in-out);
 
    &:focus {
-     outline: 0;
      border-bottom: 2px solid var(--color-brand);
      color: var(--color-text);
      background: var(--color-input-bg);
+     // Use native browser focus outline for accessibility
+   }
+
+   &:focus:not(:focus-visible) {
+     outline: none; // Hide focus for mouse users
    }
 
  }
@@ -256,8 +303,9 @@ pre {
      letter-spacing: 1px;
    }
 
-   &:focus {
-     outline: 0;
+   // Use native browser focus outline for accessibility
+   &:focus:not(:focus-visible) {
+     outline: none; // Hide focus for mouse users
    }
 
    &:disabled {
