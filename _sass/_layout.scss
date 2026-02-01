@@ -46,6 +46,39 @@
   @include span-columns(12);
 }
 
+/**
+ * Info banner
+ */
+.info-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: rgba(var(--color-brand-rgb, 74, 69, 199), 0.08);
+  border: 1px solid var(--color-brand);
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text);
+
+  .info-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--color-brand);
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .info-banner {
+    background: rgba(123, 117, 232, 0.1);
+  }
+}
+
 
 /**
  * Regular site nav
