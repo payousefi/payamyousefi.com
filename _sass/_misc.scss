@@ -232,13 +232,19 @@
   border-radius: 10px;
   background: var(--color-browser-chrome);
 
-  // Image wrapper to handle overflow clipping without affecting traffic lights
+  // Image styles with fallback for broken images
   img {
     display: block;
     width: 100%;
     border-radius: 0 0 10px 10px;
     // Ensure image covers any gaps
     margin-bottom: -1px;
+    // Fallback background for broken images
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+    min-height: 150px;
+    // Hide broken image icon/border
+    object-fit: cover;
+    color: transparent;
   }
 
   // Traffic lights in the border-top area
