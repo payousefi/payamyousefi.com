@@ -41,7 +41,7 @@ layout: default
           {% for url in urls %}
             {% capture modulo %}{{ forloop.index0 | modulo:2 }}{% endcapture %}
             {%if modulo=='0' %}{% unless forloop.first %}</figure><figure class="post-image">{% endunless %}{% endif %}
-            <div class="mobile-mockup">{% picture {{ url }} %}</div>
+            <div class="mobile-mockup">{% picture {{ url }} %}<span class="home-indicator"></span></div>
           {% endfor %}
         {% endfor %}
         </figure>

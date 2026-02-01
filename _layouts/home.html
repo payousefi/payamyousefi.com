@@ -41,7 +41,7 @@ layout: default
                             <div class="{{ type | first}}-mockup side">
                               {% picture {{ type[1] | first | split:"," | first }} %}
                             </div>
-                            <div class="mobile-mockup side">{% picture {{ url }} %}</div>
+                            <div class="mobile-mockup side">{% picture {{ url }} %}<span class="home-indicator"></span></div>
                             {% break %}
                           {% endfor %}
                           {% break %}
