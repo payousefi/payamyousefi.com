@@ -12,6 +12,13 @@ baseurl: ""
 url: https://payamyousefi.com
 google_analytics: UA-46647973-1
 
+# Category display order for portfolio
+category_order:
+  - apps
+  - content
+  - graphic
+  - science
+
 # Build settings
 markdown: kramdown
 gems:
