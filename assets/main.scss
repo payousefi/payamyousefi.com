@@ -5,7 +5,7 @@
 @import "bourbon";
 @import "neat";
 
-// Our variables
+// Our variables (SCSS - compile time)
 $base-font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 //$base-serif-font-family: 'Playfair Display', Baskerville, 'Times New Roman', serif;
 $base-sans-serif: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -16,9 +16,10 @@ $base-line-height: 1.5;
 
 $spacing-unit:     45px;
 
+// Base color values (used to generate CSS custom properties)
 $text-color:       #444;
 $background-color: #fff;
-$brand-color:      #5751d9;
+$brand-color:      #4a45c7; // Darker purple for better contrast (WCAG AA compliant)
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
@@ -34,6 +35,74 @@ $on-laptop:        1100px;
 @mixin media-query($device) {
   @media screen and (max-width: $device) {
     @content;
+  }
+}
+
+// CSS Custom Properties for theming (runtime - enables dark mode)
+:root {
+  // Colors
+  --color-bg: #{$background-color};
+  --color-bg-secondary: #f4f4f4;
+  --color-bg-tertiary: #e9e9e9;
+  --color-text: #{$text-color};
+  --color-text-muted: #666;
+  --color-text-light: #999;
+  --color-brand: #{$brand-color};
+  --color-brand-hover: #{darken($brand-color, 15%)};
+  --color-grey: #{$grey-color};
+  --color-grey-light: #{$grey-color-light};
+  --color-grey-dark: #{$grey-color-dark};
+  --color-border: #e9e9e9;
+  --color-border-dark: #ccc;
+  
+  // Shadows
+  --shadow-sm: 0 2px 6px -2px rgba(0,0,0,0.15);
+  --shadow-md: 0 4px 12px -2px rgba(0,0,0,0.15);
+  --shadow-lg: 0 4px 20px -3px rgba(0,0,0,0.2);
+  
+  // UI elements
+  --color-input-bg: #fff;
+  --color-input-border: #e9e9e9;
+  --color-code-bg: #eef;
+  
+  // Browser mockup
+  --color-browser-chrome: #dcdcdc;
+  --color-traffic-light-inactive: #c5c5c5;
+  
+  // Mobile mockup
+  --color-mobile-frame: #1a1a1a;
+}
+
+// Dark mode overrides
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1a1a1a;
+    --color-bg-secondary: #242424;
+    --color-bg-tertiary: #2d2d2d;
+    --color-text: #e5e5e5;
+    --color-text-muted: #aaa;
+    --color-text-light: #888;
+    --color-brand: #7b75e8;
+    --color-brand-hover: #9590f0;
+    --color-grey: #888;
+    --color-grey-light: #444;
+    --color-grey-dark: #ccc;
+    --color-border: #333;
+    --color-border-dark: #444;
+    
+    --shadow-sm: 0 2px 6px -2px rgba(0,0,0,0.4);
+    --shadow-md: 0 4px 12px -2px rgba(0,0,0,0.5);
+    --shadow-lg: 0 4px 20px -3px rgba(0,0,0,0.6);
+    
+    --color-input-bg: #2a2a2a;
+    --color-input-border: #444;
+    --color-code-bg: #2d2d3d;
+    
+    --color-browser-chrome: #3a3a3a;
+    --color-traffic-light-inactive: #555;
+    
+    // Mobile mockup - darker than background for contrast
+    --color-mobile-frame: #0f0f0f;
   }
 }
 

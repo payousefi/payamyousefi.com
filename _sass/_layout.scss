@@ -16,12 +16,12 @@
   text-transform: uppercase;
 
   &, &:visited {
-    color: darken($grey-color-dark, 10%);
+    color: var(--color-grey-dark);
   }
 
   &:hover {
     text-decoration: none;
-    color: #000;
+    color: var(--color-text);
   }
 
 }
@@ -31,7 +31,7 @@
   font-size: 24px;
   font-weight: 400;
   letter-spacing: 1px;
-  color: $grey-color-dark;
+  color: var(--color-grey-dark);
   margin: 5px 0;
   text-transform: uppercase;
 }
@@ -41,7 +41,7 @@
   font-size: 19px;
   line-height: 1.7;
   font-weight: 400;
-  color: #444;
+  color: var(--color-text);
   text-transform: none;
   @include span-columns(12);
 }
@@ -62,9 +62,9 @@
   }
 
   .page-link {
-    color: $brand-color;
+    color: var(--color-brand);
     line-height: $base-line-height;
-    border: 1px solid $brand-color;
+    border: 1px solid var(--color-brand);
     display: inline-block;
     padding: 3px 12px;
     text-decoration: none;
@@ -73,7 +73,7 @@
     font-weight: 400;
     border-radius: 2px;
     font-size:19px;
-    background: #FFF;
+    background: var(--color-bg);
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
@@ -81,14 +81,14 @@
     }
 
     &:hover {
-      color: darken($brand-color, 25%);
-      border-color: darken($brand-color, 25%);
+      color: var(--color-brand-hover);
+      border-color: var(--color-brand-hover);
     }
 
     &.selected {
-      background: $brand-color;
-      color:#FFF;
-      border-color: $brand-color;
+      background: var(--color-brand);
+      color: var(--color-bg);
+      border-color: var(--color-brand);
     }
   }
 
@@ -145,14 +145,14 @@
 .social {
   padding: $spacing-unit*2 0 0 0;
   font-size: 16px;
-  color: $grey-color-dark;
+  color: var(--color-grey-dark);
   position:relative;
 
   h2 {
     font-size: 32px;
     line-height: 1.7;
     margin-bottom: 10px;
-    color: #444;
+    color: var(--color-text);
     font-weight: bold;
   }
 
@@ -165,14 +165,13 @@
       border-bottom: 1px solid transparent;
 
       &:hover {
-        border-bottom: 1px solid $brand-color;
-        border-bottom: 1px solid rgba($brand-color, 0.4);
+        border-bottom: 1px solid var(--color-brand);
       }
     }
 
     &.note {
       font-size: 15px;
-      background-color: $grey-color-light;
+      background-color: var(--color-bg-secondary);
       padding: 15px;
       font-style: italic;
       border-radius: 4px;
@@ -193,8 +192,8 @@
     width: 90px;
     height: 90px;
     vertical-align: middle;
-    background: $brand-color;
-    color: #FFF;
+    background: var(--color-brand);
+    color: var(--color-bg);
     margin: 10px;
     border-radius: 50%;
 
@@ -202,7 +201,7 @@
       line-height: 90px;
     }
     &:hover {
-      background: darken($brand-color, 10%);
+      background: var(--color-brand-hover);
     }
   }
 }
@@ -246,12 +245,10 @@
   border-radius: 4px;
 
   &.success {
-    background: #e6e5fb;
-    //background: rgba($brand-color, 0.15);
+    background: rgba(87, 81, 217, 0.15); // Brand color with transparency
   }
   &.error {
-    background: #ffd9d8;
-    //background: rgba(red, 0.15);
+    background: rgba(220, 53, 69, 0.15); // Error red with transparency
   }
 }
 
@@ -261,12 +258,12 @@
 .site-footer {
   padding: 0;
   font-size:13px;
-  color: $grey-color;
+  color: var(--color-grey);
   text-align: center;
 
 
   h3 {
-    color: lighten($grey-color,20%);
+    color: var(--color-text-light);
     text-transform: uppercase;
     font-size: 20px;
     letter-spacing: 1px;
@@ -279,7 +276,7 @@
  */
 .page-content {
   padding: ($spacing-unit+15) 0  $spacing-unit 0 ;
-  background: #f4f4f4;
+  background: var(--color-bg-secondary);
   position: relative;
 }
 
@@ -289,7 +286,7 @@
 
 .post-meta {
   font-size: $small-font-size;
-  color: $grey-color;
+  color: var(--color-grey);
   font-family: $base-sans-serif;
 }
 
@@ -305,9 +302,8 @@
   top: 0;
   left: 0;
   right: 0;
-  background: #FFF;
-  background: rgba(255,255,255, 0.97);
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-sm);
   @include transition(all 350ms ease-in-out);
 
   &.active {
@@ -343,7 +339,7 @@
       display: inline-block;
       font-family: $base-sans-serif;
       text-transform: uppercase;
-      color: #999;
+      color: var(--color-text-light);
       font-size: 24px;
 
       &:last-child {
@@ -355,11 +351,11 @@
       }
 
       &:hover {
-        color: #666;
+        color: var(--color-text-muted);
       }
 
       &.selected {
-        color: $brand-color;
+        color: var(--color-brand);
       }
 
       @include media-query($on-palm) {
@@ -517,15 +513,14 @@ ul.tags {
     margin-bottom: 8px;
     margin-right: 5px;
     display: inline-block;
-    color: #666;
+    color: var(--color-text-muted);
     line-height: 30px;
-    border: 1px solid #CCC;
+    border: 1px solid var(--color-border-dark);
     padding: 0 12px;
     font-weight: 400;
     border-radius: 2px;
     font-size: 14px;
-    background: #f8f8f8;
-    background: rgba(white, 0.4);
+    background: var(--color-bg-secondary);
   }
 }
 
@@ -538,8 +533,7 @@ ul.tags {
   margin-top: 15px;
 
   &:hover {
-    border-bottom: 1px solid $brand-color;
-    border-bottom: 1px solid rgba($brand-color, 0.4);
+    border-bottom: 1px solid var(--color-brand);
   }
 }
 

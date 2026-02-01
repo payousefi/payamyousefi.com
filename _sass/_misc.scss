@@ -14,14 +14,14 @@
     pointer-events: none;
     z-index: 10;
     background-size: 50px 100%;
-    @include background-image(linear-gradient(135deg, #fff 25%, transparent 25%),
-                              linear-gradient(225deg, #fff 25%, transparent 25%));
+    background-image: linear-gradient(135deg, var(--color-bg) 25%, transparent 25%),
+                      linear-gradient(225deg, var(--color-bg) 25%, transparent 25%);
     background-position: 50%;
   }
 
   &.dark:after {
-    @include background-image(linear-gradient(135deg, #f4f4f4 25%, transparent 25%),
-                              linear-gradient(225deg, #f4f4f4 25%, transparent 25%));
+    background-image: linear-gradient(135deg, var(--color-bg-secondary) 25%, transparent 25%),
+                      linear-gradient(225deg, var(--color-bg-secondary) 25%, transparent 25%);
   }
 }
 
@@ -34,11 +34,11 @@
 
 .plain-mockup {
   display: inline-block;
-  box-shadow: 0 2px 6px -2px rgba(0,0,0,0.4);
+  box-shadow: var(--shadow-md);
   position: relative;
   border-radius: 2px;
-  border:4px solid #FFF;
-  background: #fff;
+  border: 4px solid var(--color-bg);
+  background: var(--color-bg);
   overflow:hidden;
   width:100%;
 }
@@ -47,7 +47,7 @@
   display: inline-block;
   width: 36%;
   margin: 0 4%;
-  border: 4px solid #1a1a1a;
+  border: 4px solid var(--color-mobile-frame);
   box-shadow:
     0 4px 20px -3px rgba(0,0,0,0.35),
     inset 0 0 0 1px rgba(255,255,255,0.05); // Subtle inner highlight
@@ -112,7 +112,7 @@
 
   @include media-query($on-palm) {
     width: 42%;
-    border: 3px solid #1a1a1a;
+    border: 3px solid var(--color-mobile-frame);
     border-radius: 28px;
   }
 
@@ -226,18 +226,22 @@
 .browser-mockup {
   display: inline-block;
   width:100%;
-  border-top: 22px solid #dcdcdc;
-  box-shadow: 0 2px 6px -2px rgba(0,0,0,0.4);
+  border-top: 22px solid var(--color-browser-chrome);
+  box-shadow: var(--shadow-md);
   position: relative;
   border-radius: 10px;
-  background: #dcdcdc;
+  background: var(--color-browser-chrome);
 
+  // Image wrapper to handle overflow clipping without affecting traffic lights
   img {
-    border-radius: 0 0 10px 10px;
     display: block;
     width: 100%;
+    border-radius: 0 0 10px 10px;
+    // Ensure image covers any gaps
+    margin-bottom: -1px;
   }
 
+  // Traffic lights in the border-top area
   &:before {
     display: block;
     position: absolute;
@@ -247,8 +251,8 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 0 0 0 2px #fff, 1.1em 0 0 2px #fff, 2.2em 0 0 2px #fff;
+    background-color: var(--color-traffic-light-inactive);
+    box-shadow: 0 0 0 2px var(--color-traffic-light-inactive), 1.1em 0 0 2px var(--color-traffic-light-inactive), 2.2em 0 0 2px var(--color-traffic-light-inactive);
     @include transition(all 0.25s ease-in-out);
   }
 
