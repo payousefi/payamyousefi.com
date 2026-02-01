@@ -22,7 +22,6 @@ category_order:
 # Build settings
 markdown: kramdown
 gems:
-  - jekyll-feed
   - jekyll-minifier
   - jekyll-sitemap
 exclude:
