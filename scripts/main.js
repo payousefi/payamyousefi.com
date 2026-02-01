@@ -42,22 +42,11 @@ $(document).ready(function() {
       shift();
   });
   
-  // Message form toggle
-  $('#messageLink').click(function(e) {
-      e.preventDefault();
-      $('.messageForm').addClass('expanded');
-
-      // Scroll down to contact section
-      $('a[name="contact"]').velocity('scroll', {duration: 750, easing: 'easeout', offset: 1, delay:250});
-  });
-
-
-  // Take over scroll to anchor mechanism (via velocity instead)
+  // Smooth scroll to contact section
   $('a[href="#contact"]').click(function(e) {
       e.preventDefault();
       $('a[name="contact"]').velocity('scroll', {duration: 750, easing: 'easeout', offset: 1});
   });
-
 
   //Sticky portfolio nav
   $(document).scroll(function(e) {
@@ -85,46 +74,6 @@ $(document).ready(function() {
           $('.sticky-nav').remove();
           $('.home .category-list').css('opacity', '1');
       }
-  });
-  
-
-   // Get the messages div.
-  $('.messageForm form').submit(function(event) {
-      event.preventDefault();
-      
-      // Serialize
-      var formData = $('.messageForm form').serialize();      
-      $('.messageForm form button').prop("disabled",true);
-      
-      // Submit via AJAX
-      $.ajax({
-          type: 'POST',
-          url: $('.messageForm form').attr('action'),
-          data: formData
-      }).done(function(response) {
-          $('.form-mesg').removeClass('error');
-          $('.form-mesg').addClass('success');
-          $('.form-mesg').text(response);
-          $('.form-mesg').show();
-
-          // Clear + hide the form.    
-          $('.messageForm').css('max-height',45+$('.form-mesg').outerHeight()+'px');
-          $('input').val('');
-          $('textarea').val('');      
-      }).fail(function(error) {
-        $('.form-mesg').removeClass('success');
-        $('.form-mesg').addClass('error');
-        $('.form-mesg').show();
-        $('.messageForm form button').prop("disabled",false);
-
-        // Set the message text.
-        if (error.responseText !== '') {
-          $('.form-mesg').text(error.responseText);
-        } else {
-          $('.form-mesg').text('Oops! An error occurred and your message could not be sent.');
-        }
-      });
-      
   });
   
   $(".menu-icon").click(function(){
