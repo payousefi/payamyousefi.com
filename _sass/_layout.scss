@@ -10,13 +10,13 @@
 
 .site-title {
   font-size: 34px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 46px;
   letter-spacing: 1px;
   text-transform: uppercase;
 
   &, &:visited {
-    color: var(--color-grey-dark);
+    color: var(--color-site-title);
   }
 
   &:hover {
@@ -56,7 +56,7 @@
   margin-top: 20px;
   padding: 14px 18px;
   background: rgba(var(--color-brand-rgb, 74, 69, 199), 0.08);
-  border: 1px solid var(--color-brand);
+  // border: 1px solid var(--color-brand);
   border-radius: 8px;
   font-size: 15px;
   line-height: 1.6;
@@ -97,7 +97,7 @@
   .page-link {
     color: var(--color-brand);
     line-height: 1;
-    border: 1px solid var(--color-brand);
+    border: 2px solid var(--color-brand);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -161,7 +161,7 @@
       font-weight: 400;
       letter-spacing: 1px;
       color: var(--color-brand);
-      border: 1px solid var(--color-brand);
+      border: 2px solid var(--color-brand);
       border-radius: 8px;
       background: var(--color-bg);
       text-decoration: none;
@@ -267,7 +267,7 @@
   padding: 0;
   margin-left: 0;
   background: var(--color-bg);
-  border: 1px solid var(--color-brand);
+  border: 2px solid var(--color-brand);
   border-radius: 50%;
   cursor: pointer;
   color: var(--color-brand);

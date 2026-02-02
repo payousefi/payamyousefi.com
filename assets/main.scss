@@ -2,8 +2,9 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 @charset "utf-8";
-@import "bourbon";
-@import "neat";
+
+// Custom mixins (replaces Bourbon/Neat)
+@import "mixins";
 
 // Our variables (SCSS - compile time)
 $base-font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -47,6 +48,7 @@ $on-laptop:        1100px;
   --color-text: #{$text-color};
   --color-text-muted: #666;
   --color-text-light: #999;
+  --color-site-title: #292929;
   --color-brand: #{$brand-color};
   --color-brand-hover: #{darken($brand-color, 15%)};
   --color-grey: #{$grey-color};
@@ -82,6 +84,7 @@ $on-laptop:        1100px;
     --color-text: #e5e5e5;
     --color-text-muted: #aaa;
     --color-text-light: #888;
+    --color-site-title: #ccc;
     --color-brand: #7b75e8;
     --color-brand-hover: #9590f0;
     --color-grey: #888;
@@ -114,6 +117,7 @@ $on-laptop:        1100px;
   --color-text: #e5e5e5;
   --color-text-muted: #aaa;
   --color-text-light: #888;
+  --color-site-title: #ccc;
   --color-brand: #7b75e8;
   --color-brand-hover: #9590f0;
   --color-grey: #888;

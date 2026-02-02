@@ -1,0 +1,89 @@
+/**
+ * Custom SCSS Mixins
+ * Lightweight replacements for Bourbon/Neat
+ */
+
+// ===========================================
+// Transitions (replaces Bourbon's transition)
+// ===========================================
+@mixin transition($properties...) {
+  transition: $properties;
+}
+
+// ===========================================
+// Transforms (replaces Bourbon's transform)
+// ===========================================
+@mixin transform($transform) {
+  transform: $transform;
+}
+
+// ===========================================
+// Appearance (still needs -webkit- for Safari)
+// ===========================================
+@mixin appearance($value) {
+  -webkit-appearance: $value;
+  appearance: $value;
+}
+
+// ===========================================
+// Flexbox helpers (replaces Bourbon's display/flex)
+// ===========================================
+@mixin display($value) {
+  display: $value;
+}
+
+@mixin flex($values) {
+  flex: $values;
+}
+
+// ===========================================
+// Grid System (replaces Neat's span-columns/outer-container)
+// Using flexbox for modern browser support
+// ===========================================
+
+// Container with max-width and auto margins
+@mixin outer-container($max-width: $content-width) {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  @extend %clearfix;
+}
+
+// Column spans using flexbox percentages
+// 12-column grid system
+@mixin span-columns($columns, $total: 12) {
+  $width: percentage($columns / $total);
+  width: $width;
+  float: left;
+  box-sizing: border-box;
+}
+
+// ===========================================
+// Font Face (replaces Bourbon's font-face)
+// ===========================================
+@mixin font-face($family, $path, $weight: normal, $style: normal, $file-formats: eot woff ttf svg) {
+  @font-face {
+    font-family: $family;
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+    
+    $src: ();
+    
+    @if index($file-formats, eot) {
+      src: url('#{$path}.eot');
+      $src: append($src, url('#{$path}.eot?#iefix') format('embedded-opentype'), comma);
+    }
+    @if index($file-formats, woff) {
+      $src: append($src, url('#{$path}.woff') format('woff'), comma);
+    }
+    @if index($file-formats, ttf) {
+      $src: append($src, url('#{$path}.ttf') format('truetype'), comma);
+    }
+    @if index($file-formats, svg) {
+      $src: append($src, url('#{$path}.svg##{$family}') format('svg'), comma);
+    }
+    
+    src: $src;
+  }
+}
