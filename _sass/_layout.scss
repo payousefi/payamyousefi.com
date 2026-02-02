@@ -96,17 +96,21 @@
 
   .page-link {
     color: var(--color-brand);
-    line-height: $base-line-height;
+    line-height: 1;
     border: 2px solid var(--color-brand);
-    display: inline-block;
-    padding: 4px 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 14px;
     text-decoration: none;
     letter-spacing: 1px;
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
-    border-radius: 3px;
+    border-radius: 8px;
     font-size: 18px;
     background: var(--color-bg);
+    vertical-align: middle;
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
@@ -127,51 +131,180 @@
 
   @include media-query($on-palm) {
     position: absolute;
-    top: 9px;
+    top: 12px;
     right: $spacing-unit / 2;
     text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-    .menu-icon {
-      display: block;
-      float: right;
-      width: 36px;
-      height: 26px;
-      line-height: 0;
-      padding: 10px 0 0 0;
-      text-align: center;
-      cursor: pointer;
-      background: transparent;
-      border: none;
+    // Mobile header actions (contact + theme toggle) - hidden by default, shown when menu active
+    .mobile-header-actions {
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
 
-      > svg path {
-        fill: $grey-color-dark;
+    // Show mobile header actions when menu is active
+    &.active .mobile-header-actions {
+      display: flex;
+    }
+
+    .mobile-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      padding: 0 16px;
+      font-size: 15px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: var(--color-brand);
+      border: 2px solid var(--color-brand);
+      border-radius: 8px;
+      background: var(--color-bg);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-brand-hover);
+        border-color: var(--color-brand-hover);
       }
     }
 
-    .trigger {
-      clear: both;
-      display: none;
+    .mobile-theme-toggle {
+      width: 40px;
+      height: 40px;
+      margin-left: 0;
     }
 
-    &.active .trigger, &:active .trigger {
-      display: block;
-      margin-top: 40px;
-      padding-bottom: 5px;
-      @include user-select(none);
+    .menu-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      position: relative;
+
+      .hamburger-line {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background-color: var(--color-brand);
+        transition: all 0.3s ease;
+        position: absolute;
+
+        &:nth-child(1) {
+          top: 12px;
+        }
+        &:nth-child(2) {
+          top: 21px;
+        }
+        &:nth-child(3) {
+          top: 30px;
+        }
+      }
+
+      &:hover .hamburger-line {
+        background-color: var(--color-brand-hover);
+      }
+    }
+
+    // Hamburger to X animation when menu is active
+    &.active .menu-icon {
+      .hamburger-line {
+        &:nth-child(1) {
+          top: 21px;
+          transform: rotate(45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          top: 21px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    // Hide the dropdown trigger on mobile - we only show contact + theme toggle
+    .trigger {
+      display: none !important;
     }
 
     .page-link {
       display: block;
-      padding: 5px 10px;
+      padding: 8px 20px;
+      text-align: left;
 
       &:not(:last-child) {
         margin-right: 0;
       }
-      margin-left: 20px;
+      margin-left: 0;
     }
   }
 }
 
+// Hide mobile header actions on desktop
+.mobile-header-actions {
+  display: none;
+}
+
+/**
+ * Theme toggle button (dark mode)
+ */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin-left: 8px;
+  background: var(--color-bg);
+  border: 2px solid var(--color-brand);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--color-brand);
+  transition: all 0.2s ease;
+  vertical-align: middle;
+
+  &:hover {
+    border-color: var(--color-brand-hover);
+    color: var(--color-brand-hover);
+  }
+
+  .sun-icon,
+  .moon-icon {
+    transition: opacity 0.2s ease, transform 0.3s ease;
+    width: 18px;
+    height: 18px;
+  }
+
+  // Light mode: show moon (suggests "click to go dark")
+  .sun-icon {
+    display: none;
+  }
+  .moon-icon {
+    display: block;
+  }
+}
+
+// Dark mode: show sun (suggests "click to go light")
+[data-theme="dark"] .theme-toggle,
+.dark-mode .theme-toggle {
+  .sun-icon {
+    display: block;
+  }
+  .moon-icon {
+    display: none;
+  }
+}
 
 
 /**
