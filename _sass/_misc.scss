@@ -112,6 +112,7 @@
 
   @include media-query($on-palm) {
     width: 42%;
+    margin-bottom: 15px; // Match vertical spacing with browser mocks
     border: 3px solid var(--color-mobile-frame);
     border-radius: 28px;
   }
