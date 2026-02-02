@@ -6,6 +6,13 @@ layout: default
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
     <ul class="tags">
+      {% if page.lastModifiedDate and page.createdDate %}
+        {% assign modified = page.lastModifiedDate | date: "%s" | plus: 0 %}
+        {% assign created = page.createdDate | date: "%s" | plus: 0 %}
+        {% if modified > created %}
+          <li class="updated-tag">Updated {{ page.lastModifiedDate | date: "%B %Y" }}</li>
+        {% endif %}
+      {% endif %}
       {% for tag in page.tags %}
         <li>
           {{ tag }}

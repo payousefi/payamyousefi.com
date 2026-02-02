@@ -689,6 +689,14 @@ ul.tags {
     border-radius: 2px;
     font-size: 14px;
     background: var(--color-bg-secondary);
+
+    // Updated tag - styled with brand accent
+    &.updated-tag {
+      color: #fff;
+      background: var(--color-brand);
+      border-color: var(--color-brand);
+      font-weight: 600;
+    }
   }
 }
 
@@ -709,4 +717,5 @@ ul.tags {
   position:  relative;
   text-align: center;
 }
+
 

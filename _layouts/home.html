@@ -24,7 +24,7 @@ layout: default
   <section class="portfolio">
 
     {% for cat_name in site.category_order %}
-      {% assign cat_posts = site.categories[cat_name] %}
+      {% assign cat_posts = site.categories[cat_name] | sort: "lastModifiedDate" | reverse %}
       {% if cat_posts %}
       {% assign cat_index = forloop.index0 %}
       {% assign is_first = forloop.first %}
@@ -77,6 +77,13 @@ layout: default
               </p>
 
               <ul class="tags">
+                {% if post.lastModifiedDate and post.createdDate %}
+                  {% assign modified = post.lastModifiedDate | date: "%s" | plus: 0 %}
+                  {% assign created = post.createdDate | date: "%s" | plus: 0 %}
+                  {% if modified > created %}
+                    <li class="updated-tag">Updated</li>
+                  {% endif %}
+                {% endif %}
                 {% for tag in post.tags %}
                   <li>
                     {{ tag }}
