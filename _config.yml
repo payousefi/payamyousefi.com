@@ -39,6 +39,7 @@ picture:
       attr:
         class: portfolio-full
         itemprop: image
+        loading: lazy
       source_lrg:
         media: "(min-width: 40em)"
         width: 900
