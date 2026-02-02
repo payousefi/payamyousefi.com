@@ -9,6 +9,78 @@
 
   document.addEventListener('DOMContentLoaded', function() {
 
+    // ==========================================
+    // Theme Toggle (Dark Mode)
+    // ==========================================
+    
+    var themeToggles = document.querySelectorAll('.theme-toggle');
+    var htmlElement = document.documentElement;
+    var THEME_KEY = 'theme-preference';
+    
+    /**
+     * Get the user's theme preference
+     * Priority: localStorage > system preference > light
+     * @returns {string} 'dark' or 'light'
+     */
+    function getThemePreference() {
+      var stored = localStorage.getItem(THEME_KEY);
+      if (stored) {
+        return stored;
+      }
+      // Check system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'light';
+    }
+    
+    /**
+     * Apply theme to the document and update button labels
+     * @param {string} theme - 'dark' or 'light'
+     */
+    function applyTheme(theme) {
+      // Always set the data-theme attribute to enable manual override of system preference
+      htmlElement.setAttribute('data-theme', theme);
+      
+      // Update button labels to describe what clicking will do (for all theme toggles)
+      var label = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+      themeToggles.forEach(function(toggle) {
+        toggle.setAttribute('aria-label', label);
+        toggle.setAttribute('title', label);
+      });
+    }
+    
+    /**
+     * Toggle between light and dark themes
+     */
+    function toggleTheme() {
+      var currentTheme = htmlElement.getAttribute('data-theme');
+      var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem(THEME_KEY, newTheme);
+    }
+    
+    // Initialize theme on page load
+    applyTheme(getThemePreference());
+    
+    // Listen for theme toggle button clicks (all theme toggles)
+    themeToggles.forEach(function(toggle) {
+      toggle.addEventListener('click', toggleTheme);
+    });
+    
+    // Listen for system preference changes
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        // When system preference changes, follow it and clear any manual override
+        localStorage.removeItem(THEME_KEY);
+        applyTheme(e.matches ? 'dark' : 'light');
+      });
+    }
+
+    // ==========================================
+    // Portfolio Navigation
+    // ==========================================
+
     // Cache DOM elements
     var categoryLinks = document.querySelectorAll('.category-list a');
     var categoriesSection = document.querySelector('.categories');
