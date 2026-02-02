@@ -12,10 +12,26 @@ baseurl: ""
 url: https://payamyousefi.com
 google_analytics: G-VB31S6GZ1J
 
-# Category display order for portfolio
+# Category configuration for portfolio
+# Each category has: id (internal), slug (URL), name (display)
+categories_config:
+  apps:
+    slug: apps
+    name: Apps
+  content-sites:
+    slug: content-sites
+    name: Content Sites
+  graphic:
+    slug: graphic
+    name: Graphic
+  science:
+    slug: science
+    name: Science
+
+# Category display order (use category IDs)
 category_order:
   - apps
-  - content
+  - content-sites
   - graphic
   - science
 

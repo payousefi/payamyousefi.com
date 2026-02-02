@@ -78,7 +78,7 @@
     }
 
     // ==========================================
-    // Portfolio Navigation
+    // Portfolio Navigation (SPA-like with History API)
     // ==========================================
 
     // Cache DOM elements
@@ -89,6 +89,9 @@
     var homeCategoryList = document.querySelector('.home .category-list');
     var menuIcon = document.querySelector('.menu-icon');
     var siteNav = document.querySelector('.site-nav');
+    
+    // Default category (first in list)
+    var defaultCategory = 'apps';
 
     /**
      * Smooth scroll to element
@@ -108,13 +111,71 @@
     }
 
     /**
-     * Get current tab from URL hash or default to 'apps'
-     * @returns {string} Current tab name
+     * Get all valid URL slugs from the category links
+     * @returns {Array} Array of valid URL slugs
+     */
+    function getValidSlugs() {
+      var slugs = [];
+      Array.prototype.forEach.call(categoryLinks, function(link) {
+        var slug = link.getAttribute('data-slug');
+        if (slug) slugs.push(slug);
+      });
+      return slugs;
+    }
+
+    /**
+     * Get current tab (category ID) from URL path or default to 'apps'
+     * URL structure: /, /apps, /content-sites, /graphic, /science
+     * @returns {string} Current category ID
      */
     function getCurrentTab() {
-      var hash = window.location.hash.replace('#', '');
-      var matchingLink = document.querySelector('.category-list a[href="#' + hash + '"]');
-      return (hash && matchingLink) ? hash : 'apps';
+      var path = window.location.pathname;
+      // Remove trailing slash and get last segment (URL slug)
+      var segments = path.replace(/\/$/, '').split('/');
+      var lastSegment = segments[segments.length - 1];
+      
+      // Find the category link that matches this URL slug
+      if (lastSegment) {
+        var matchingLink = document.querySelector('.category-list a[data-slug="' + lastSegment + '"]');
+        if (matchingLink) {
+          // Return the category ID, not the slug
+          return matchingLink.getAttribute('data-category');
+        }
+      }
+      
+      return defaultCategory;
+    }
+
+    /**
+     * Build URL for a category using its slug
+     * @param {string} categoryId - Category ID
+     * @returns {string} URL path (e.g., /apps, /content-sites, /graphic, /science)
+     */
+    function buildCategoryUrl(categoryId) {
+      // Get the slug for this category from the link
+      var link = document.querySelector('.category-list a[data-category="' + categoryId + '"]');
+      var slug = link ? link.getAttribute('data-slug') : categoryId;
+      
+      // Get base path (handle subdirectory deployments)
+      var basePath = '/';
+      
+      // Check if we're in a subdirectory by looking at the current path
+      var path = window.location.pathname;
+      var segments = path.replace(/\/$/, '').split('/').filter(Boolean);
+      
+      // If current path has a category slug at the end, remove it to get base
+      var lastSegment = segments[segments.length - 1];
+      var validSlugs = getValidSlugs();
+      if (validSlugs.indexOf(lastSegment) !== -1) {
+        segments.pop();
+      }
+      
+      // Rebuild base path
+      if (segments.length > 0) {
+        basePath = '/' + segments.join('/') + '/';
+      }
+      
+      return basePath + slug;
     }
 
     /**
@@ -124,7 +185,7 @@
       if (categoryLinks.length === 0) return; // Don't bother if not on home page
 
       var currentTab = getCurrentTab();
-      var currentLink = document.querySelector('.category-list a[href="#' + currentTab + '"]');
+      var currentLink = document.querySelector('.category-list a[data-category="' + currentTab + '"]');
       
       if (!currentLink) return;
 
@@ -137,7 +198,7 @@
       // Also update sticky nav if it exists
       var stickyLinks = document.querySelectorAll('.sticky-nav .category-list a');
       Array.prototype.forEach.call(stickyLinks, function(link) {
-        if (link.getAttribute('href') === '#' + currentTab) {
+        if (link.getAttribute('data-category') === currentTab) {
           link.classList.add('selected');
         } else {
           link.classList.remove('selected');
@@ -147,7 +208,7 @@
       // Calculate portfolio index and transform
       var homeLinks = document.querySelectorAll('.home .category-list a');
       var homeLinkArray = Array.prototype.slice.call(homeLinks);
-      var currentHomeLink = document.querySelector('.home .category-list a[href="#' + currentTab + '"]');
+      var currentHomeLink = document.querySelector('.home .category-list a[data-category="' + currentTab + '"]');
       var portfolioIndex = homeLinkArray.indexOf(currentHomeLink);
 
       // Apply transform to all tab sections
@@ -186,13 +247,18 @@
     }
 
     /**
-     * Handle category link clicks
+     * Handle category link clicks - SPA navigation with History API
      * @param {Event} e - Click event
      */
     function handleCategoryClick(e) {
       e.preventDefault();
-      var href = this.getAttribute('href');
-      window.location.hash = href;
+      
+      var category = this.getAttribute('data-category');
+      var url = buildCategoryUrl(category);
+      
+      // Update URL without page reload using History API
+      history.pushState({ category: category }, '', url);
+      
       shift();
       smoothScrollTo(categoriesSection, 1);
     }
@@ -208,18 +274,18 @@
       var socialTop = socialSection.getBoundingClientRect().top + scrollTop;
       var existingStickyNav = document.querySelector('.sticky-nav');
 
-      var shouldShowSticky = scrollTop > categoriesTop && 
-                             scrollTop < (socialTop - 100) && 
+      var shouldShowSticky = scrollTop > categoriesTop &&
+                             scrollTop < (socialTop - 100) &&
                              !existingStickyNav;
 
-      var shouldHideSticky = (scrollTop <= categoriesTop || scrollTop >= (socialTop - 100)) && 
+      var shouldHideSticky = (scrollTop <= categoriesTop || scrollTop >= (socialTop - 100)) &&
                              existingStickyNav;
 
       if (shouldShowSticky && homeCategoryList) {
         // Create sticky nav
         var stickyNav = document.createElement('div');
         stickyNav.className = 'sticky-nav';
-        stickyNav.innerHTML = '<div class="wrapper"><div class="category-list">' + homeCategoryList.innerHTML + '</div></div>';
+        stickyNav.innerHTML = '<div class="wrapper"><nav class="category-list">' + homeCategoryList.innerHTML + '</nav></div>';
         document.body.appendChild(stickyNav);
         
         // Trigger reflow then add active class for animation
@@ -240,7 +306,7 @@
         // Update selected state
         var currentTab = getCurrentTab();
         Array.prototype.forEach.call(stickyNavLinks, function(link) {
-          if (link.getAttribute('href') === '#' + currentTab) {
+          if (link.getAttribute('data-category') === currentTab) {
             link.classList.add('selected');
           } else {
             link.classList.remove('selected');
@@ -281,10 +347,9 @@
       });
     }
 
-    // Hash change (browser back/forward)
-    window.addEventListener('hashchange', function(e) {
+    // Handle browser back/forward with History API
+    window.addEventListener('popstate', function(e) {
       if (categoryLinks.length === 0) return;
-      e.preventDefault();
       shift();
     });
 

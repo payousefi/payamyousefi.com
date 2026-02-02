@@ -7,13 +7,11 @@ layout: default
   <section class="categories wrapper">
 
     <nav class="category-list" aria-label="Portfolio categories">
-      {% for cat_name in site.category_order %}
-        {% if site.categories[cat_name] %}
-          <a href="#{{ cat_name }}">
-            {% case cat_name %}
-              {% when 'content' %}content sites
-              {% else %}{{ cat_name }}
-            {% endcase %}
+      {% for cat_id in site.category_order %}
+        {% assign cat_config = site.categories_config[cat_id] %}
+        {% if site.categories[cat_id] and cat_config %}
+          <a href="{{ '/' | relative_url }}{{ cat_config.slug }}" data-category="{{ cat_id }}" data-slug="{{ cat_config.slug }}">
+            {{ cat_config.name }}
           </a>
         {% endif %}
       {% endfor %}
@@ -23,12 +21,12 @@ layout: default
 
   <section class="portfolio">
 
-    {% for cat_name in site.category_order %}
-      {% assign cat_posts = site.categories[cat_name] | sort: "lastModifiedDate" | reverse %}
+    {% for cat_id in site.category_order %}
+      {% assign cat_posts = site.categories[cat_id] | sort: "lastModifiedDate" | reverse %}
       {% if cat_posts %}
       {% assign cat_index = forloop.index0 %}
       {% assign is_first = forloop.first %}
-      <section class="tab-{{ cat_name }}" aria-hidden="{% if is_first %}false{% else %}true{% endif %}" style="transform: translate3d(0%, 0px, 0px);{% unless is_first %} height: 0;{% endunless %}">
+      <section class="tab-{{ cat_id }}" aria-hidden="{% if is_first %}false{% else %}true{% endif %}" style="transform: translate3d(0%, 0px, 0px);{% unless is_first %} height: 0;{% endunless %}">
 
         {% for post in cat_posts %}
           {% if post.url %}

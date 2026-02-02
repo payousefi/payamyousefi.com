@@ -97,7 +97,7 @@
   .page-link {
     color: var(--color-brand);
     line-height: 1;
-    border: 2px solid var(--color-brand);
+    border: 1px solid var(--color-brand);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -161,7 +161,7 @@
       font-weight: 400;
       letter-spacing: 1px;
       color: var(--color-brand);
-      border: 2px solid var(--color-brand);
+      border: 1px solid var(--color-brand);
       border-radius: 8px;
       background: var(--color-bg);
       text-decoration: none;
@@ -267,7 +267,7 @@
   padding: 0;
   margin-left: 0;
   background: var(--color-bg);
-  border: 2px solid var(--color-brand);
+  border: 1px solid var(--color-brand);
   border-radius: 50%;
   cursor: pointer;
   color: var(--color-brand);
