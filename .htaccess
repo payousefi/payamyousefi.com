@@ -1,0 +1,25 @@
+Options -Indexes
+Options +FollowSymLinks
+
+ErrorDocument 404 /404.html
+
+# Enable RewriteEngine
+RewriteEngine On
+
+# Redirect 301 /portfolio/design/connect-ad-campaign/ http://payamyousefi.com/graphic/2014/11/28/connect-ad-campaign.html
+# Redirect 301 /portfolio/design/what-kind-of-music/ http://payamyousefi.com/apps/2014/05/21/music.html
+# Redirect 301 /portfolio/design/rattlesnake/ http://payamyousefi.com/apps/2014/04/24/rattlesnake.html
+# Redirect 301 /portfolio/design/ http://payamyousefi.com/
+# Redirect 301 /design/ http://payamyousefi.com/
+
+RewriteRule ^portfolio/(.*)$ / [R=301,NC,L]
+
+# SPA-like routing for category pages
+# Rewrite /apps, /content-sites, /graphic, /science to index.html
+# These directories exist (Jekyll creates them for posts), but we want
+# the root category URLs to serve index.html for SPA navigation
+RewriteRule ^(apps|content-sites|graphic|science)/?$ /index.html [L]
+
+# Redirect trailing slashes to non-trailing (optional, for cleaner URLs)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]

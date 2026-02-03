@@ -41,6 +41,8 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+include:
+  - .htaccess
 picture:
   source: assets/images/_fullsize
   output: generated
