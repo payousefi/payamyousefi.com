@@ -2,7 +2,4 @@ _site
 .sass-cache
 .jekyll-metadata
 _drafts
-Gemfile.lock
-assets/images/_fullsize
-_posts
 .DS_Store
