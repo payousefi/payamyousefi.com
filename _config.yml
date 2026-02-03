@@ -37,7 +37,6 @@ category_order:
 markdown: kramdown
 gems:
   - jekyll-minifier
-  - jekyll-sitemap
 exclude:
   - Gemfile
   - Gemfile.lock

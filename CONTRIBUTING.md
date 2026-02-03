@@ -42,4 +42,7 @@ The generated site will be in the `_site` directory with:
 ## Plugins
 
 - **[jekyll-minifier](https://github.com/digitalsparky/jekyll-minifier)** — HTML/CSS/JS minification
-- **[jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap)** — Automatic sitemap generation
+
+## Sitemap
+
+The sitemap is generated from a custom template ([`sitemap.xml`](sitemap.xml)) that uses `lastModifiedDate` from post front matter for accurate `<lastmod>` dates.
