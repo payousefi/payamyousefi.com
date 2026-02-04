@@ -28,7 +28,8 @@ A web app that displays your Last.fm top artists in a beautiful tiled layout. En
 Major rewrite with the help of Claude:
 
 - **Vanilla JavaScript** — Removed jQuery dependency entirely
-- **Multi-source artist images** — Now pulls high-quality images from across reputable sources on the web
+- **Multi-source artist images** — Pulls high-quality images from multiple APIs with adaptive rate limiting and configurable primary source
+- **Music Personality** — Generates a unique headline based on listening habits using mood × genre analysis
 - **SPA navigation** — History API for smooth, shareable URLs
 - **Accessibility improvements** — Keyboard navigation, screen reader support, reduced motion preferences
 
