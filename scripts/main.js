@@ -285,7 +285,7 @@
         // Create sticky nav
         var stickyNav = document.createElement('div');
         stickyNav.className = 'sticky-nav';
-        stickyNav.innerHTML = '<div class="wrapper"><nav class="category-list">' + homeCategoryList.innerHTML + '</nav></div>';
+        stickyNav.innerHTML = '<div class="wrapper"><nav class="category-list" aria-label="Portfolio categories">' + homeCategoryList.innerHTML + '</nav></div>';
         document.body.appendChild(stickyNav);
         
         // Trigger reflow then add active class for animation

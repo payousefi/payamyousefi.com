@@ -35,7 +35,7 @@ layout: default
           {% assign urls = src | split:',' %}
           {% for url in urls %}
           <figure class="post-image">
-            <div class="browser-mockup active">{% picture {{ url }} %}</div>
+            <div class="browser-mockup active">{% picture {{ url }} --alt Screenshot {{ forloop.index }} of {{ page.title | strip_html }} %}</div>
           </figure>
           {% endfor %}
         {% endfor %}
@@ -48,7 +48,7 @@ layout: default
           {% for url in urls %}
             {% capture modulo %}{{ forloop.index0 | modulo:2 }}{% endcapture %}
             {%if modulo=='0' %}{% unless forloop.first %}</figure><figure class="post-image">{% endunless %}{% endif %}
-            <div class="mobile-mockup">{% picture {{ url }} %}<span class="home-indicator"></span></div>
+            <div class="mobile-mockup">{% picture {{ url }} --alt Mobile screenshot of {{ page.title | strip_html }} %}<span class="home-indicator"></span></div>
           {% endfor %}
         {% endfor %}
         </figure>
@@ -59,7 +59,7 @@ layout: default
           {% assign urls = src | split:',' %}
           {% for url in urls %}
           <figure class="post-image">
-            <div class="plain-mockup">{% picture {{ url }} %}</div>
+            <div class="plain-mockup">{% picture {{ url }} --alt Image of {{ page.title | strip_html }} %}</div>
           </figure>
           {% endfor %}
         {% endfor %}

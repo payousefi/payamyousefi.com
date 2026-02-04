@@ -278,7 +278,7 @@
 
 i[class^="icon-"] {
   font-family: 'py-socials' !important;
-  speak: none;
+  speak: never; // Updated from deprecated 'none'
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
