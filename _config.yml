@@ -40,6 +40,8 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - README.md
+  - CONTRIBUTING.md
 include:
   - .htaccess
 picture:
