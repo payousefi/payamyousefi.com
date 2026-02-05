@@ -13,12 +13,13 @@ tags:
   - Personal
 img:
   browser:
-    - music-payamyousefi.png,music-payamyousefi-2.png
+    - music-payamyousefi-2026.png,music-payamyousefi-2-2026.png
   mobile:
-    - music-3.png,music-4.png
+    - music-3-2026.png,music-4-2026.png
 excerpt: >
   I'm often asked "What kind of music do you like?" — a question I can never fully answer. So I built a tool that dynamically presents my recent listening history in a visual format.
 ---
+
 "What kind of music do you like?" — a question I could never answer well. This tool solves that by dynamically presenting my recent listening history in a visual format.
 
 A web app that displays your Last.fm top artists in a beautiful tiled layout. Enter any username to get a shareable, custom URL.
@@ -32,4 +33,3 @@ Major rewrite with the help of Claude:
 - **Music Personality** — Generates a unique headline based on listening habits using mood × genre analysis
 - **SPA navigation** — History API for smooth, shareable URLs
 - **Accessibility improvements** — Keyboard navigation, screen reader support, reduced motion preferences
-

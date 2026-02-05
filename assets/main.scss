@@ -1,37 +1,37 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
+
 @charset "utf-8";
 
 // Custom mixins (replaces Bourbon/Neat)
 @import "mixins";
 
 // Our variables (SCSS - compile time)
-$base-font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$base-font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 //$base-serif-font-family: 'Playfair Display', Baskerville, 'Times New Roman', serif;
-$base-sans-serif: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
+$base-sans-serif: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-size: 16px;
 $base-font-weight: 400;
-$small-font-size:  $base-font-size * 0.875;
+$small-font-size: $base-font-size * 0.875;
 $base-line-height: 1.5;
 
-$spacing-unit:     45px;
+$spacing-unit: 45px;
 
 // Base color values (used to generate CSS custom properties)
-$text-color:       #444;
+$text-color: #444;
 $background-color: #fff;
-$brand-color:      #4a45c7; // Darker purple for better contrast (WCAG AA compliant)
+$brand-color: #4a45c7; // Darker purple for better contrast (WCAG AA compliant)
 
-$grey-color:       #828282;
+$grey-color: #828282;
 $grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
+$grey-color-dark: darken($grey-color, 25%);
 
 // Width of the content area
-$content-width:    1100px;
+$content-width: 1100px;
 
-$on-palm:          600px;
-$on-laptop:        1100px;
-
+$on-palm: 600px;
+$on-laptop: 1100px;
 
 @mixin media-query($device) {
   @media screen and (max-width: $device) {
@@ -56,23 +56,23 @@ $on-laptop:        1100px;
   --color-grey-dark: #{$grey-color-dark};
   --color-border: #e9e9e9;
   --color-border-dark: #ccc;
-  
+
   // Shadows
-  --shadow-sm: 0 2px 6px -2px rgba(0,0,0,0.15);
-  --shadow-md: 0 4px 12px -2px rgba(0,0,0,0.15);
-  --shadow-lg: 0 4px 20px -3px rgba(0,0,0,0.2);
-  
+  --shadow-sm: 0 2px 6px -2px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 4px 20px -3px rgba(0, 0, 0, 0.2);
+
   // UI elements
   --color-input-bg: #fff;
   --color-input-border: #e9e9e9;
   --color-code-bg: #eef;
-  
+
   // Browser mockup
   --color-browser-chrome: #dcdcdc;
   --color-traffic-light-inactive: #c5c5c5;
-  
+
   // Mobile mockup
-  --color-mobile-frame: #1a1a1a;
+  --color-mobile-frame: #0f0f0f;
 }
 
 // Dark mode overrides - system preference
@@ -92,18 +92,18 @@ $on-laptop:        1100px;
     --color-grey-dark: #ccc;
     --color-border: #333;
     --color-border-dark: #444;
-    
-    --shadow-sm: 0 2px 6px -2px rgba(0,0,0,0.4);
-    --shadow-md: 0 4px 12px -2px rgba(0,0,0,0.5);
-    --shadow-lg: 0 4px 20px -3px rgba(0,0,0,0.6);
-    
+
+    --shadow-sm: 0 2px 6px -2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 4px 20px -3px rgba(0, 0, 0, 0.6);
+
     --color-input-bg: #2a2a2a;
     --color-input-border: #444;
     --color-code-bg: #2d2d3d;
-    
+
     --color-browser-chrome: #3a3a3a;
     --color-traffic-light-inactive: #555;
-    
+
     // Mobile mockup - darker than background for contrast
     --color-mobile-frame: #0f0f0f;
   }
@@ -125,25 +125,21 @@ $on-laptop:        1100px;
   --color-grey-dark: #ccc;
   --color-border: #333;
   --color-border-dark: #444;
-  
-  --shadow-sm: 0 2px 6px -2px rgba(0,0,0,0.4);
-  --shadow-md: 0 4px 12px -2px rgba(0,0,0,0.5);
-  --shadow-lg: 0 4px 20px -3px rgba(0,0,0,0.6);
-  
+
+  --shadow-sm: 0 2px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 4px 20px -3px rgba(0, 0, 0, 0.6);
+
   --color-input-bg: #2a2a2a;
   --color-input-border: #444;
   --color-code-bg: #2d2d3d;
-  
+
   --color-browser-chrome: #3a3a3a;
   --color-traffic-light-inactive: #555;
-  
+
   // Mobile mockup - darker than background for contrast
   --color-mobile-frame: #0f0f0f;
 }
 
 // Import partials.
-@import
-  "base",
-  "layout",
-  "misc"
-;
+@import "base", "layout", "misc";
