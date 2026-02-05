@@ -33,3 +33,5 @@ Major rewrite with the help of Claude:
 - **Music Personality** — Generates a unique headline based on listening habits using mood × genre analysis
 - **SPA navigation** — History API for smooth, shareable URLs
 - **Accessibility improvements** — Keyboard navigation, screen reader support, reduced motion preferences
+
+**<a href="https://music.payamyousefi.com" target="_blank">Check it out →</a>**
