@@ -528,8 +528,8 @@
   width: 100%;
   @include display(flex);
   overflow: hidden;
-  max-height: 500px;
-  @include transition(all 750ms ease-in-out);
+  max-height: none;
+  @include transition(max-height 750ms ease-in-out);
 }
 .portfolio section[class^='tab-'] {
   @include flex(0 0 100%);

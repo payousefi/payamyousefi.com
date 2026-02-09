@@ -178,6 +178,17 @@
     }
 
     /**
+     * Update portfolio max-height to fit the active tab content
+     * @param {string} currentTab - The active category tab ID
+     */
+    function updatePortfolioHeight(currentTab) {
+      var activeSection = document.querySelector('section.tab-' + currentTab);
+      if (activeSection && portfolioSection) {
+        portfolioSection.style.maxHeight = activeSection.scrollHeight + 'px';
+      }
+    }
+
+    /**
      * Shift portfolio to show the current tab
      */
     function shift() {
@@ -238,10 +249,7 @@
           section.style.height = isActive ? 'auto' : '0px';
         });
 
-        var activeSection = document.querySelector('section.tab-' + currentTab);
-        if (activeSection && portfolioSection) {
-          portfolioSection.style.maxHeight = activeSection.scrollHeight + 'px';
-        }
+        updatePortfolioHeight(currentTab);
       }, 800);
     }
 
@@ -336,6 +344,29 @@
 
     // Initialize
     shift();
+
+    // Recalculate portfolio height when images load (they affect scrollHeight)
+    if (portfolioSection) {
+      var portfolioImages = portfolioSection.querySelectorAll('img');
+      Array.prototype.forEach.call(portfolioImages, function (img) {
+        if (!img.complete) {
+          img.addEventListener('load', function () {
+            var currentTab = getCurrentTab();
+            updatePortfolioHeight(currentTab);
+          });
+        }
+      });
+
+      // Also recalculate on window resize
+      var resizeTimeout = null;
+      window.addEventListener('resize', function () {
+        if (resizeTimeout) clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function () {
+          var currentTab = getCurrentTab();
+          updatePortfolioHeight(currentTab);
+        }, 250);
+      });
+    }
 
     // Event Listeners
 
