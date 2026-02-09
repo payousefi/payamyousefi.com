@@ -4,7 +4,7 @@
 
 .zigzag {
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     display: block;
     top: 100%;
@@ -117,7 +117,7 @@
   &:before {
     display: block;
     position: absolute;
-    content: "";
+    content: '';
     top: 10px;
     left: 50%;
     width: 56px;
@@ -143,7 +143,7 @@
   &:after {
     display: block;
     position: absolute;
-    content: "";
+    content: '';
     top: 0;
     left: 0;
     right: 0;
@@ -158,18 +158,8 @@
     backdrop-filter: blur(12px) saturate(1.5);
     -webkit-backdrop-filter: blur(12px) saturate(1.5);
     // Mask to fade the blur effect smoothly
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      black 0%,
-      black 35%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to bottom,
-      black 0%,
-      black 35%,
-      transparent 100%
-    );
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 100%);
     border-radius: 34px 34px 0 0;
     pointer-events: none;
     z-index: 10;
@@ -189,20 +179,10 @@
     left: 0;
     right: 0;
     height: 45px;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.35) 0%,
-      rgba(0, 0, 0, 0.15) 50%,
-      rgba(0, 0, 0, 0) 100%
-    );
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0) 100%);
     backdrop-filter: saturate(1.3);
     -webkit-backdrop-filter: saturate(1.3);
-    -webkit-mask-image: linear-gradient(
-      to top,
-      black 0%,
-      black 50%,
-      transparent 100%
-    );
+    -webkit-mask-image: linear-gradient(to top, black 0%, black 50%, transparent 100%);
     mask-image: linear-gradient(to top, black 0%, black 50%, transparent 100%);
     border-radius: 0 0 34px 34px;
     pointer-events: none;
@@ -210,7 +190,7 @@
 
     // The actual home indicator bar
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 8px;
       left: 50%;
@@ -251,11 +231,7 @@
     // Ensure image covers any gaps
     margin-bottom: -1px;
     // Fallback background for broken images
-    background: linear-gradient(
-      135deg,
-      var(--color-bg-secondary) 0%,
-      var(--color-bg-tertiary) 100%
-    );
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
     min-height: 150px;
     // Hide broken image icon/border
     object-fit: cover;
@@ -266,7 +242,7 @@
   &:before {
     display: block;
     position: absolute;
-    content: "";
+    content: '';
     top: -14px;
     left: 13px;
     width: 6px;
@@ -293,15 +269,10 @@
  * Social Icons
  */
 
-@include font-face(
-  "py-socials",
-  "fonts/py-socials",
-  normal,
-  $file-formats: eot woff ttf svg
-);
+@include font-face('py-socials', 'fonts/py-socials', normal, $file-formats: eot woff ttf svg);
 
-i[class^="icon-"] {
-  font-family: "py-socials" !important;
+i[class^='icon-'] {
+  font-family: 'py-socials' !important;
   speak: never; // Updated from deprecated 'none'
   font-style: normal;
   font-weight: normal;
@@ -313,23 +284,23 @@ i[class^="icon-"] {
 }
 
 .icon-mail:before {
-  content: "\e620";
+  content: '\e620';
 }
 .icon-twitter:before {
-  content: "\ea96";
+  content: '\ea96';
 }
 .icon-flickr2:before {
-  content: "\eaa4";
+  content: '\eaa4';
 }
 .icon-github:before {
-  content: "\eab0";
+  content: '\eab0';
 }
 .icon-soundcloud:before {
-  content: "\eac3";
+  content: '\eac3';
 }
 .icon-linkedin2:before {
-  content: "\eaca";
+  content: '\eaca';
 }
 .icon-lastfm:before {
-  content: "\eacb";
+  content: '\eacb';
 }

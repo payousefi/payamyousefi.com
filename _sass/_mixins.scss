@@ -67,9 +67,9 @@
     font-weight: $weight;
     font-style: $style;
     font-display: swap;
-    
+
     $src: ();
-    
+
     @if index($file-formats, eot) {
       src: url('#{$path}.eot');
       $src: append($src, url('#{$path}.eot?#iefix') format('embedded-opentype'), comma);
@@ -83,7 +83,7 @@
     @if index($file-formats, svg) {
       $src: append($src, url('#{$path}.svg##{$family}') format('svg'), comma);
     }
-    
+
     src: $src;
   }
 }

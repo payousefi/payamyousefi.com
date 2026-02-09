@@ -5,12 +5,12 @@
 @charset "utf-8";
 
 // Custom mixins (replaces Bourbon/Neat)
-@import "mixins";
+@import 'mixins';
 
 // Our variables (SCSS - compile time)
-$base-font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 //$base-serif-font-family: 'Playfair Display', Baskerville, 'Times New Roman', serif;
-$base-sans-serif: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-sans-serif: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $base-font-size: 16px;
 $base-font-weight: 400;
 $small-font-size: $base-font-size * 0.875;
@@ -77,7 +77,7 @@ $on-laptop: 1100px;
 
 // Dark mode overrides - system preference
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not([data-theme='light']) {
     --color-bg: #1a1a1a;
     --color-bg-secondary: #242424;
     --color-bg-tertiary: #2d2d2d;
@@ -110,7 +110,7 @@ $on-laptop: 1100px;
 }
 
 // Dark mode overrides - manual toggle (overrides system preference)
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
   --color-bg: #1a1a1a;
   --color-bg-secondary: #242424;
   --color-bg-tertiary: #2d2d2d;
@@ -142,4 +142,4 @@ $on-laptop: 1100px;
 }
 
 // Import partials.
-@import "base", "layout", "misc";
+@import 'base', 'layout', 'misc';

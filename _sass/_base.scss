@@ -1,14 +1,25 @@
 /**
  * Reset some basic elements
  */
-body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+hr,
+dl,
+dd,
+ol,
+ul,
+figure {
   margin: 0;
   padding: 0;
 }
-
-
 
 /**
  * Basic styling
@@ -18,28 +29,36 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   -webkit-text-size-adjust: 100%;
-  -webkit-font-feature-settings: "kern" 1;
-     -moz-font-feature-settings: "kern" 1;
-       -o-font-feature-settings: "kern" 1;
-          font-feature-settings: "kern" 1;
+  -webkit-font-feature-settings: 'kern' 1;
+  -moz-font-feature-settings: 'kern' 1;
+  -o-font-feature-settings: 'kern' 1;
+  font-feature-settings: 'kern' 1;
   font-kerning: normal;
   // Smooth transition when switching color schemes
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
-
-
 
 /**
  * Set `margin-bottom` to maintain vertical rhythm
  */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+ul,
+ol,
+dl,
+figure,
 %vertical-rhythm {
   margin-bottom: $spacing-unit / 2;
 }
-
-
 
 /**
  * Images
@@ -48,8 +67,6 @@ img {
   max-width: 100%;
   vertical-align: middle;
 }
-
-
 
 /**
  * Figures
@@ -62,12 +79,11 @@ figcaption {
   font-size: $small-font-size;
 }
 
-
-
 /**
  * Lists
  */
-ul, ol {
+ul,
+ol {
   margin-left: $spacing-unit;
 }
 
@@ -78,18 +94,19 @@ li {
   }
 }
 
-
-
 /**
  * Headings
  */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: $base-font-weight;
   font-family: $base-sans-serif;
   text-transform: none;
 }
-
-
 
 /**
  * Links
@@ -149,8 +166,6 @@ a {
   }
 }
 
-
-
 /**
  * Blockquotes
  */
@@ -166,8 +181,6 @@ blockquote {
     margin-bottom: 0;
   }
 }
-
-
 
 /**
  * Code formatting
@@ -195,14 +208,12 @@ pre {
   }
 }
 
-
-
 /**
  * Wrapper
  */
 .wrapper {
   max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-  max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+  max-width: calc(#{$content-width} - (#{$spacing-unit} * 2));
   margin-right: auto;
   margin-left: auto;
   padding: $spacing-unit;
@@ -211,7 +222,7 @@ pre {
 
   @include media-query($on-laptop) {
     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+    max-width: calc(#{$content-width} - (#{$spacing-unit}));
     padding-right: $spacing-unit / 1.5;
     padding-left: $spacing-unit / 1.5;
   }
@@ -221,12 +232,10 @@ pre {
  * Clearfix
  */
 %clearfix:after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
-
-
 
 /**
  * Icons
@@ -240,82 +249,79 @@ pre {
   }
 }
 
-
 /**
  * Inputs / Buttons
  */
 
+input,
+textarea {
+  display: block;
+  box-shadow: none;
+  border-radius: 0;
+  @include appearance(none);
+  margin: 10px 0;
+  width: 100%;
+  font-size: 20px;
+  font-family: $base-font-family;
+  padding: 10px;
+  border: 1px solid var(--color-input-border);
+  border-bottom: 2px solid var(--color-brand);
+  background: var(--color-input-bg);
+  color: var(--color-text-muted);
+  @include transition(all 0.3s ease-in-out);
 
- input, textarea {
-   display: block;
-   box-shadow: none;
-   border-radius: 0;
-   @include appearance(none);
-   margin: 10px 0;
-   width: 100%;
-   font-size: 20px;
-   font-family: $base-font-family;
-   padding: 10px;
-   border: 1px solid var(--color-input-border);
-   border-bottom: 2px solid var(--color-brand);
-   background: var(--color-input-bg);
-   color: var(--color-text-muted);
-   @include transition(all 0.3s ease-in-out);
+  &:focus {
+    border-bottom: 2px solid var(--color-brand);
+    color: var(--color-text);
+    background: var(--color-input-bg);
+    // Use native browser focus outline for accessibility
+  }
 
-   &:focus {
-     border-bottom: 2px solid var(--color-brand);
-     color: var(--color-text);
-     background: var(--color-input-bg);
-     // Use native browser focus outline for accessibility
-   }
+  &:focus:not(:focus-visible) {
+    outline: none; // Hide focus for mouse users
+  }
+}
 
-   &:focus:not(:focus-visible) {
-     outline: none; // Hide focus for mouse users
-   }
+button[type='submit'] {
+  display: inline-block;
+  background: var(--color-bg);
+  margin: 3px 0;
+  font-size: 20px;
+  font-family: $base-sans-serif;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  border: 2px solid var(--color-brand);
+  letter-spacing: 0;
+  padding: 10px 18px;
+  border-radius: 3px;
+  cursor: pointer;
+  @include appearance(none);
+  @include transition(all 0.3s ease-in-out);
 
- }
+  i {
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 20px;
+  }
 
- button[type="submit"] {
-   display:inline-block;
-   background: var(--color-bg);
-   margin: 3px 0;
-   font-size: 20px;
-   font-family: $base-sans-serif;
-   text-transform: uppercase;
-   color: var(--color-brand);
-   border: 2px solid var(--color-brand);
-   letter-spacing: 0;
-   padding: 10px 18px;
-   border-radius:3px;
-   cursor: pointer;
-   @include appearance(none);
-   @include transition(all 0.3s ease-in-out);
+  &:hover:not(:disabled) {
+    color: var(--color-brand-hover);
+    border-color: var(--color-brand-hover);
+    letter-spacing: 1px;
+  }
 
-   i {
-     display:inline-block;
-     margin-right:5px;
-     font-size: 20px;
-   }
+  // Use native browser focus outline for accessibility
+  &:focus:not(:focus-visible) {
+    outline: none; // Hide focus for mouse users
+  }
 
-   &:hover:not(:disabled) {
-     color: var(--color-brand-hover);
-     border-color: var(--color-brand-hover);
-     letter-spacing: 1px;
-   }
+  &:disabled {
+    border-color: var(--color-text-light);
+    color: var(--color-text-light);
 
-   // Use native browser focus outline for accessibility
-   &:focus:not(:focus-visible) {
-     outline: none; // Hide focus for mouse users
-   }
-
-   &:disabled {
-     border-color: var(--color-text-light);
-     color: var(--color-text-light);
-
-     &:after {
-       content: "ing...";
-       letter-spacing: 1px;
-     }
-   }
- }
-
+    &:after {
+      content: 'ing...';
+      letter-spacing: 1px;
+    }
+  }
+}
