@@ -2,12 +2,14 @@
 layout: post
 title: '"What kind of music do you like?"'
 createdDate: 2014-05-21
-lastModifiedDate: 2026-02-01
+lastModifiedDate: 2026-02-08
 category: apps
 tags:
   - HTML5
   - CSS3
   - JavaScript
+  - Node.js
+  - AI
   - Web Design
   - Web Development
   - Personal
@@ -17,21 +19,20 @@ img:
   mobile:
     - music-3-2026.png,music-4-2026.png
 excerpt: >
-  I'm often asked "What kind of music do you like?" — a question I can never fully answer. So I built a tool that dynamically presents my recent listening history in a visual format.
+  "What kind of music do you like?" — a question I could never answer well. So I built a web app that does it for me: enter any Last.fm username and get a shareable, visual snapshot of your recent listening.
 ---
 
-"What kind of music do you like?" — a question I could never answer well. This tool solves that by dynamically presenting my recent listening history in a visual format.
-
-A web app that displays your Last.fm top artists in a beautiful tiled layout. Enter any username to get a shareable, custom URL.
+"What kind of music do you like?" — a question I could never answer well. So I built a web app that does it for me: enter any Last.fm username and get a shareable, visual snapshot of your recent listening.
 
 ## 2026 Update
 
 Major rewrite with the help of Claude:
 
-- **Vanilla JavaScript** — Removed jQuery dependency entirely
-- **Multi-source artist images** — Pulls high-quality images from multiple APIs with adaptive rate limiting and configurable primary source
-- **Music Personality** — Generates a unique headline based on listening habits using mood × genre analysis
-- **SPA navigation** — History API for smooth, shareable URLs
-- **Accessibility improvements** — Keyboard navigation, screen reader support, reduced motion preferences
+- **New backend** — Rebuilt the server with Node.js (goodbye PHP)
+- **No dependencies** — Pure vanilla JavaScript, no jQuery
+- **Better artist images** — Pulls from four different sources for the best quality
+- **AI personality headlines** — Claude writes a creative tagline based on your listening habits
+- **Mood-based colors** — The background shifts to match the vibe of your music
+- **Smoother experience** — Single-page app with shareable URLs, better security, and full accessibility
 
 **<a href="https://music.payamyousefi.com" target="_blank">Check it out →</a>**
