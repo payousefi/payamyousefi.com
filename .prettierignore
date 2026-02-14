@@ -1,0 +1,4 @@
+# Jekyll layout/include files contain Liquid template syntax
+# that Prettier's HTML parser cannot handle correctly
+_layouts/
+_includes/

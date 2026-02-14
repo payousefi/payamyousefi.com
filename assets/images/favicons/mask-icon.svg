@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Safari mask icon — must be single-color black; color attr in HTML sets display color -->
+  <circle cx="256" cy="256" r="240" fill="black"/>
+
+  <!-- Phosphor letter-circle-p, scaled 2.4× from Phosphor center -->
+  <g transform="translate(256,256) scale(2.4) translate(-128,-128)" fill="white">
+    <path d="M136,80H104a8,8,0,0,0-8,8v80a8,8,0,0,0,16,0V152h24a36,36,0,0,0,0-72Zm0,56H112V96h24a20,20,0,0,1,0,40Z"/>
+  </g>
+</svg>

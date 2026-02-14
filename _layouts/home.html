@@ -9,7 +9,16 @@ layout: default
     <nav class="category-list" aria-label="Portfolio categories">
       {% for cat_id in site.category_order %}
         {% assign cat_config = site.categories_config[cat_id] %}
+        {% assign has_visible_posts = false %}
         {% if site.categories[cat_id] and cat_config %}
+          {% for post in site.categories[cat_id] %}
+            {% unless post.archived %}
+              {% assign has_visible_posts = true %}
+              {% break %}
+            {% endunless %}
+          {% endfor %}
+        {% endif %}
+        {% if has_visible_posts %}
           <a href="{{ '/' | relative_url }}{{ cat_config.slug }}" data-category="{{ cat_id }}" data-slug="{{ cat_config.slug }}">
             {{ cat_config.name }}
           </a>
@@ -21,14 +30,29 @@ layout: default
 
   <section class="portfolio">
 
+    {% assign found_first_visible_cat = false %}
     {% for cat_id in site.category_order %}
       {% assign cat_posts = site.categories[cat_id] | sort: "lastModifiedDate" | reverse %}
+      {% assign has_visible_posts = false %}
       {% if cat_posts %}
-      {% assign cat_index = forloop.index0 %}
-      {% assign is_first = forloop.first %}
+        {% for post in cat_posts %}
+          {% unless post.archived %}
+            {% assign has_visible_posts = true %}
+            {% break %}
+          {% endunless %}
+        {% endfor %}
+      {% endif %}
+      {% if has_visible_posts %}
+      {% if found_first_visible_cat == false %}
+        {% assign is_first = true %}
+        {% assign found_first_visible_cat = true %}
+      {% else %}
+        {% assign is_first = false %}
+      {% endif %}
       <section class="tab-{{ cat_id }}" aria-hidden="{% if is_first %}false{% else %}true{% endif %}" style="transform: translate3d(0%, 0px, 0px);{% unless is_first %} height: 0;{% endunless %}">
 
         {% for post in cat_posts %}
+          {% unless post.archived %}
           {% if post.url %}
           <section class="portfolio-post">
 
@@ -93,6 +117,7 @@ layout: default
 
           </section>
           {% endif %}
+          {% endunless %}
         {% endfor %}
       </section>
       {% endif %}

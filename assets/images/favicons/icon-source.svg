@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!--
+    payamyousefi.com — canonical icon source
+    Round brand-color circle with white Phosphor "letter-circle-p" on transparent background.
+    Brand color: #4a45c7 (WCAG AA compliant purple)
+    Phosphor viewBox center (128,128) maps to circle center (256,256) via scale(2.4).
+    Used to generate icon-192.png, icon-512.png, favicon-32.png, apple-touch-icon.png.
+  -->
+
+  <!-- Solid brand-color circle -->
+  <circle cx="256" cy="256" r="240" fill="#4a45c7"/>
+
+  <!-- Phosphor letter-circle-p (regular), scaled 2.4× from Phosphor center -->
+  <g transform="translate(256,256) scale(2.4) translate(-128,-128)" fill="#ffffff">
+    <path d="M136,80H104a8,8,0,0,0-8,8v80a8,8,0,0,0,16,0V152h24a36,36,0,0,0,0-72Zm0,56H112V96h24a20,20,0,0,1,0,40Z"/>
+  </g>
+</svg>
